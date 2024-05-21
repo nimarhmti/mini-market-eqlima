@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import RateItem from "@/components/ui/Card";
-import DialogWrapper from "@/app/(homePage)/_components/dialogWrapper";
+import RateItem from "@/app/(homePage)/_components/rateItem/Card";
+import DialogWrapper from "@/components/ui/dialogWrapper";
 import Navbar from "@/components/ui/navbar";
 import { Box, Container, Grid } from "@mui/material";
 export default function Home() {

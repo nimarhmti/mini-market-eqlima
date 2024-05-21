@@ -1,12 +1,5 @@
 "use client";
-import { Noto_Sans } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
-
-const NotoSans = Noto_Sans({
-  weight: ["400"],
-  subsets: ["cyrillic", "greek", "vietnamese"],
-  display: "swap",
-});
 
 const theme = createTheme({
   breakpoints: {

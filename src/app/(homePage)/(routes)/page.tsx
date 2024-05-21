@@ -1,4 +1,5 @@
 import RateItem from "@/components/ui/Card";
+import DialogWrapper from "@/app/(homePage)/_components/diologWrapper";
 import Navbar from "@/components/ui/navbar";
 import { Box, Container, Grid } from "@mui/material";
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
             <RateItem label="خرید" price="200000" />
           </Grid>
         </Grid>
+        <DialogWrapper></DialogWrapper>
       </Container>
     </Box>
   );

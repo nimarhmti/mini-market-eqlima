@@ -5,8 +5,9 @@ import { CustomButton } from "./CustomizeButton";
 interface Props {
   label: string;
   price: string;
+  onClickHandler: () => void;
 }
-export default function RateItem({ label, price }: Props) {
+export default function RateItem({ label, price, onClickHandler }: Props) {
   return (
     <Card
       sx={{
@@ -30,7 +31,7 @@ export default function RateItem({ label, price }: Props) {
         <Typography variant="body1" color="secondary.main">
           {price} <Typography variant="caption">ریال</Typography>
         </Typography>
-        <CustomButton label={label} />
+        <CustomButton label={label} onClick={onClickHandler} />
       </CardContent>
     </Card>
   );

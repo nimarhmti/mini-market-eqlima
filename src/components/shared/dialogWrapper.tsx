@@ -3,8 +3,8 @@ import React from "react";
 import Modal from "@mui/material/Modal";
 import { Box, CssBaseline, SwipeableDrawer, styled } from "@mui/material";
 import { Global } from "@emotion/react";
-import CustomModal from "@/components/ui/modal";
-import { Drawer } from "@/components/ui/drawer";
+import CustomModal from "@/components/shared/modal";
+import { Drawer } from "@/components/shared/drawer";
 
 interface Props {
   isOpen: boolean;

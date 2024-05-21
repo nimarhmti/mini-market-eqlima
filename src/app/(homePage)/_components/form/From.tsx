@@ -1,5 +1,5 @@
-import { CustomButton } from "@/components/ui/CustomizeButton";
-import Input from "@/components/ui/InputField";
+import { CustomButton } from "@/components/shared/CustomizeButton";
+import Input from "@/components/shared/InputField";
 import { Box, InputAdornment, Typography } from "@mui/material";
 import React, { useState } from "react";
 //interfaces and types
@@ -53,7 +53,6 @@ export const From = ({ onCloseModal }: Props) => {
     <form
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       onSubmit={handlePost}
-      key="form"
     >
       <Typography align="right">ثبت سفارش خرید / فروش</Typography>
       <label style={{ textAlign: "right" }} htmlFor="amount">

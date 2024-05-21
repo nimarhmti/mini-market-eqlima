@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
-import { CustomButton } from "../../../../components/ui/CustomizeButton";
+import { CustomButton } from "../../../../components/shared/CustomizeButton";
 // import  from "./CustomizeButton";
 interface Props {
   label: string;

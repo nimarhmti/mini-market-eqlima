@@ -13,7 +13,7 @@ export default function CustomModal({
       onClose={onOpenHandler}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      sx={{ display: { xs: "none", md: "block" } }}
+      sx={{ display: { xs: "none", sm: "block" } }}
     >
       <Box
         sx={{

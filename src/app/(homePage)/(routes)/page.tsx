@@ -4,6 +4,7 @@ import RateItem from "@/app/(homePage)/_components/rateItem/Card";
 import DialogWrapper from "@/components/ui/dialogWrapper";
 import Navbar from "@/components/ui/navbar";
 import { Box, Container, Grid } from "@mui/material";
+import { From } from "../_components/form/From";
 export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   //open and close handler function
@@ -45,7 +46,8 @@ export default function Home() {
           </Grid>
         </Grid>
         <DialogWrapper isOpen={isOpen} onOpenHandler={onOpenModalHandler}>
-          <Box>teset</Box>
+          <From onCloseModal={onOpenModalHandler} />
+          {/* <Box>teset</Box> */}
         </DialogWrapper>
       </Container>
     </Box>

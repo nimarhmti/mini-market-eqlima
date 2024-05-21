@@ -3,7 +3,7 @@ import { drawerPropsType } from "../types/interfaces";
 import { SwipeableDrawer, styled } from "@mui/material";
 
 const StyledBox = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
+  backgroundColor: theme.palette.primary.light,
 }));
 
 export const Drawer = ({
@@ -17,7 +17,7 @@ export const Drawer = ({
     <SwipeableDrawer
       anchor="bottom"
       sx={{
-        display: { xs: "block", md: "none" },
+        display: { xs: "block", sm: "none" },
       }}
       container={container}
       open={isOpen}

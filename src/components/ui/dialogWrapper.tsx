@@ -24,7 +24,7 @@ export default function DialogWrapper({
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <div>
+    <Box bgcolor="primary.light">
       <CssBaseline />
       <Global
         styles={{
@@ -47,6 +47,6 @@ export default function DialogWrapper({
       <CustomModal isOpen={isOpen} onOpenHandler={onOpenHandler}>
         {children}
       </CustomModal>
-    </div>
+    </Box>
   );
 }

@@ -1,13 +1,23 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import { CustomButton } from "../../../../components/shared/CustomizeButton";
+import Skeleton from "@mui/material/Skeleton";
+import SkeletonCard from "./SkeltoneCard";
 // import  from "./CustomizeButton";
 interface Props {
   label: string;
-  price: string;
+  price: number | null;
   onClickHandler: () => void;
+  isLoading?: boolean;
 }
-export default function RateItem({ label, price, onClickHandler }: Props) {
+export default function RateItem({
+  label,
+  price,
+  onClickHandler,
+  isLoading,
+}: Props) {
+  if (isLoading) return <SkeletonCard />;
+
   return (
     <Card
       sx={{

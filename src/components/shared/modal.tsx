@@ -1,6 +1,6 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
-import { modalPropsType } from "../types/interfaces";
+import { modalPropsType } from "../../types/sharedcomponents/interfaces";
 
 export default function CustomModal({
   isOpen,

@@ -1,5 +1,5 @@
 import React from "react";
-import { drawerPropsType } from "../types/interfaces";
+import { drawerPropsType } from "../../types/sharedcomponents/interfaces";
 import { SwipeableDrawer, styled } from "@mui/material";
 
 const StyledBox = styled("div")(({ theme }) => ({

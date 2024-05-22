@@ -60,7 +60,6 @@ export const From = ({ onCloseModal }: Props) => {
       </label>
       <Input
         type="number"
-        defaultValue={initialValues.amount}
         id="amount"
         value={inputValue.amount}
         error={inputValue.errorMessage ? true : false}

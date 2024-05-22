@@ -23,7 +23,7 @@ export default function Home() {
       <Navbar />
       <Container
         sx={{
-          paddingTop: "5rem",
+          paddingTop: "6rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

@@ -3,7 +3,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/theme/theme";
 import type { Metadata } from "next";
 import "../../style/globals.css";
-import { CssBaseline } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Create Next App",

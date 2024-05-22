@@ -1,23 +1,31 @@
+"use client";
 import { Card, CardContent, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { CustomButton } from "../../../../components/shared/CustomizeButton";
 import Skeleton from "@mui/material/Skeleton";
 import SkeletonCard from "./SkeltoneCard";
+import DialogWrapper from "@/components/shared/dialogWrapper";
+import { From } from "../form/From";
 // import  from "./CustomizeButton";
 interface Props {
   label: string;
   price: number | null;
-  onClickHandler: () => void;
   isLoading?: boolean;
+  name: string;
 }
 export default function RateItem({
   label,
   price,
-  onClickHandler,
   isLoading,
+  name,
 }: Props) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   if (isLoading) return <SkeletonCard />;
+  // const [alert, setAlert] = useState<boolean>(false);
 
+  const onOpenModalHandler = () => {
+    setIsOpen((pre) => !pre);
+  };
   return (
     <Card
       sx={{
@@ -41,8 +49,11 @@ export default function RateItem({
         <Typography variant="body1" color="secondary.main">
           {price} <Typography variant="caption">ریال</Typography>
         </Typography>
-        <CustomButton label={label} onClick={onClickHandler} />
+        <CustomButton label={label} onClick={onOpenModalHandler} />
       </CardContent>
+      <DialogWrapper isOpen={isOpen} onOpenHandler={onOpenModalHandler}>
+        <From onCloseModal={onOpenModalHandler} lastPrice={price} name={name} />
+      </DialogWrapper>
     </Card>
   );
 }

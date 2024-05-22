@@ -9,10 +9,21 @@ import { SseServices } from "@/services/SSE";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const [alert, setAlert] = useState<boolean>(false);
   const { isLoading, isError, value } = SseServices();
   const onOpenModalHandler = () => {
     setIsOpen((pre) => !pre);
   };
+  // const handleCloseAlert = (
+  //   event: React.SyntheticEvent | Event,
+  //   reason?: string
+  // ) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+  //   setAlert(false);
+  // };
+
   if (isError)
     return <Typography variant="h1">somethings went wrong!</Typography>;
   return (
@@ -36,25 +47,22 @@ export default function Home() {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <RateItem
+              name="buy"
               label="خرید"
               price={value.buyPrice}
-              onClickHandler={onOpenModalHandler}
               isLoading={isLoading}
             />
           </Grid>
           {/* sell section  */}
           <Grid item xs={12} md={6}>
             <RateItem
+              name="sell"
               label="فروش"
               price={value.sellPrice}
-              onClickHandler={onOpenModalHandler}
               isLoading={isLoading}
             />
           </Grid>
         </Grid>
-        <DialogWrapper isOpen={isOpen} onOpenHandler={onOpenModalHandler}>
-          <From onCloseModal={onOpenModalHandler} />
-        </DialogWrapper>
       </Container>
     </Box>
   );

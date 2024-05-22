@@ -1,22 +1,28 @@
+import CustomAlert from "@/components/shared/Alert";
 import { CustomButton } from "@/components/shared/CustomizeButton";
 import Input from "@/components/shared/InputField";
+import usePost from "@/hooks/usePost";
 import { Box, InputAdornment, Typography } from "@mui/material";
 import React, { useState } from "react";
 //interfaces and types
 interface Props {
   onCloseModal: () => void;
+  lastPrice: number | undefined | null;
+  name: string;
 }
 interface valueModel {
-  amount: number;
+  weight: number;
   errorMessage: string;
 }
 //initial values
 const initialValues: valueModel = {
   errorMessage: "",
-  amount: 100,
+  weight: 100,
 };
-export const From = ({ onCloseModal }: Props) => {
+const url = "/order";
+export const From = ({ onCloseModal, lastPrice, name }: Props) => {
   const [inputValue, setInputValue] = useState<valueModel>(initialValues);
+  const { makeRequest, data, isLoading, error } = usePost(`${url}/${name}`);
   //conditions
 
   //handler functions
@@ -24,10 +30,11 @@ export const From = ({ onCloseModal }: Props) => {
     event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.currentTarget;
+    console.log(value);
     const copyValue = +value;
     if (!copyValue) {
       setInputValue({
-        amount: copyValue,
+        weight: copyValue,
         errorMessage: "لطفا فیلد را پر کنید! ",
       });
     } else if (copyValue < 0) {
@@ -46,6 +53,10 @@ export const From = ({ onCloseModal }: Props) => {
   };
   const handlePost = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    await makeRequest({
+      weight: +inputValue.weight,
+      price: lastPrice,
+    });
   };
   //main
 
@@ -54,16 +65,19 @@ export const From = ({ onCloseModal }: Props) => {
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       onSubmit={handlePost}
     >
+      {/* <CustomAlert isOpen={true} status="success" /> */}
+
       <Typography align="right">ثبت سفارش خرید / فروش</Typography>
       <label style={{ textAlign: "right" }} htmlFor="amount">
         وزن
       </label>
       <Input
-        type="number"
-        id="amount"
-        value={inputValue.amount}
+        type="weight"
+        id="weight"
+        defaultValue={initialValues.weight}
+        value={inputValue.weight}
         error={inputValue.errorMessage ? true : false}
-        name="amount"
+        name="weight"
         onChange={onChangeHandler}
         InputLabelProps={{ shrink: true }}
         helperText={inputValue.errorMessage}

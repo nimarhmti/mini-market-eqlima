@@ -1,29 +1,18 @@
-import CustomAlert from "@/components/shared/Alert";
 import { CustomButton } from "@/components/shared/CustomizeButton";
 import Input from "@/components/shared/InputField";
 import usePost from "@/hooks/usePost";
+import { formProps, valueModel } from "@/types/haomePage/interfaces";
 import { Box, InputAdornment, Typography } from "@mui/material";
 import React, { useState } from "react";
-//interfaces and types
-interface Props {
-  onCloseModal: () => void;
-  lastPrice: number | undefined | null;
-  name: string;
-}
-interface valueModel {
-  weight: number;
-  errorMessage: string;
-}
 //initial values
 const initialValues: valueModel = {
   errorMessage: "",
   weight: 100,
 };
 const url = "/order";
-export const From = ({ onCloseModal, lastPrice, name }: Props) => {
+export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
   const [inputValue, setInputValue] = useState<valueModel>(initialValues);
   const { makeRequest, data, isLoading, error } = usePost(`${url}/${name}`);
-  //conditions
 
   //handler functions
   const onChangeHandler = (

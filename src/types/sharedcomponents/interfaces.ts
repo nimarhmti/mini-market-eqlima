@@ -11,3 +11,4 @@ export interface drawerPropsType extends dialogPropsType {
   drawerBleeding: number;
   container: any;
 }
+

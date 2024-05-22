@@ -2,26 +2,14 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { CustomButton } from "../../../../components/shared/CustomizeButton";
-import Skeleton from "@mui/material/Skeleton";
 import SkeletonCard from "./SkeltoneCard";
 import DialogWrapper from "@/components/shared/dialogWrapper";
 import { From } from "../form/From";
-// import  from "./CustomizeButton";
-interface Props {
-  label: string;
-  price: number | null;
-  isLoading?: boolean;
-  name: string;
-}
-export default function RateItem({
-  label,
-  price,
-  isLoading,
-  name,
-}: Props) {
+import { cardProps } from "@/types/haomePage/interfaces";
+
+export default function RateItem({ label, price, isLoading, name }: cardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   if (isLoading) return <SkeletonCard />;
-  // const [alert, setAlert] = useState<boolean>(false);
 
   const onOpenModalHandler = () => {
     setIsOpen((pre) => !pre);

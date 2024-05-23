@@ -4,6 +4,7 @@ import { RegisterApi } from "@/services";
 import { useMutationBuy } from "@/services/buy/buy.query";
 import { formProps, valueModel } from "@/types/haomePage/interfaces";
 import { Box, InputAdornment, Typography, useTheme } from "@mui/material";
+import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 //initial values
 const initialValues: valueModel = {
@@ -15,6 +16,7 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
   const mutationApi = RegisterApi[name];
   const { mutate } = mutationApi();
   const theme = useTheme();
+  const { enqueueSnackbar } = useSnackbar();
   //handler functions
   const onChangeHandler = (
     event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -49,8 +51,17 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
       },
       {
         onSuccess() {
-          console.log("done");
+          enqueueSnackbar("باموفقیت ثبت شد", {
+            autoHideDuration: 3000,
+            variant: "success",
+          });
           onCloseModal();
+        },
+        onError() {
+          enqueueSnackbar("مشکلی رخ داده دوباره امتحان کنید", {
+            autoHideDuration: 3000,
+            variant: "error",
+          });
         },
       }
     );

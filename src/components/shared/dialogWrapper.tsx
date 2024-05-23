@@ -1,7 +1,5 @@
-"use client";
 import React from "react";
-import Modal from "@mui/material/Modal";
-import { Box, CssBaseline, SwipeableDrawer, styled } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import { Global } from "@emotion/react";
 import CustomModal from "@/components/shared/modal";
 import { Drawer } from "@/components/shared/drawer";

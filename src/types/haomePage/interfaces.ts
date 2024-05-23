@@ -13,5 +13,5 @@ export interface cardProps {
   label: string;
   price: number | null;
   isLoading?: boolean;
-  name: string;
+  name: "buy" | "sell";
 }

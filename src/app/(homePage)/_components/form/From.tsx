@@ -62,8 +62,6 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       onSubmit={handlePost}
     >
-      {/* <CustomAlert isOpen={true} status="success" /> */}
-
       <Typography align="right">ثبت سفارش خرید / فروش</Typography>
       <label style={{ textAlign: "right" }} htmlFor="amount">
         وزن

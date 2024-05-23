@@ -1,4 +1,3 @@
-"use client";
 import { Box, Modal, useTheme } from "@mui/material";
 import React from "react";
 import { modalPropsType } from "../../types/sharedcomponents/interfaces";

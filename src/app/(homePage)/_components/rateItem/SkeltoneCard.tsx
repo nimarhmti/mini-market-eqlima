@@ -1,7 +1,9 @@
 import React from "react";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material";
 export default function SkeletonCard() {
+  const theme = useTheme();
   return (
     <Stack
       spacing={1}
@@ -10,7 +12,7 @@ export default function SkeletonCard() {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        border: "1px solid #F9BA48",
+        border: "1px solid " + theme.palette.secondary.main,
         p: 2,
       }}
     >

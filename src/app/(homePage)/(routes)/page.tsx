@@ -2,9 +2,9 @@
 import RateItem from "@/app/(homePage)/_components/rateItem/Card";
 import Navbar from "@/components/shared/navbar";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { SseServices } from "@/services/SSE";
+import { useSseServices } from "@/services/SSE";
 export default function Home() {
-  const { isLoading, isError, value } = SseServices();
+  const { isLoading, isError, value } = useSseServices();
   if (isError)
     return <Typography variant="h1">somethings went wrong!</Typography>;
   return (

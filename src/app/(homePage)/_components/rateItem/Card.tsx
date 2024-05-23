@@ -1,5 +1,4 @@
-"use client";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import { CustomButton } from "../../../../components/shared/CustomizeButton";
 import SkeletonCard from "./SkeltoneCard";
@@ -9,16 +8,16 @@ import { cardProps } from "@/types/haomePage/interfaces";
 
 export default function RateItem({ label, price, isLoading, name }: cardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const theme = useTheme();
   if (isLoading) return <SkeletonCard />;
-
-  const onOpenModalHandler = () => {
+  const toggleModalHandler = () => {
     setIsOpen((pre) => !pre);
   };
   return (
     <Card
       sx={{
         padding: "2rem",
-        border: "solid 1px #F9BA48",
+        border: "solid 1px " + theme.palette.secondary.main,
         bgcolor: "primary.main",
       }}
     >
@@ -37,10 +36,10 @@ export default function RateItem({ label, price, isLoading, name }: cardProps) {
         <Typography variant="body1" color="secondary.main">
           {price} <Typography variant="caption">ریال</Typography>
         </Typography>
-        <CustomButton label={label} onClick={onOpenModalHandler} />
+        <CustomButton label={label} onClick={toggleModalHandler} />
       </CardContent>
-      <DialogWrapper isOpen={isOpen} onOpenHandler={onOpenModalHandler}>
-        <From onCloseModal={onOpenModalHandler} lastPrice={price} name={name} />
+      <DialogWrapper isOpen={isOpen} onOpenHandler={toggleModalHandler}>
+        <From onCloseModal={toggleModalHandler} lastPrice={price} name={name} />
       </DialogWrapper>
     </Card>
   );

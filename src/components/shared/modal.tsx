@@ -1,4 +1,5 @@
-import { Box, Modal } from "@mui/material";
+"use client";
+import { Box, Modal, useTheme } from "@mui/material";
 import React from "react";
 import { modalPropsType } from "../../types/sharedcomponents/interfaces";
 
@@ -7,6 +8,7 @@ export default function CustomModal({
   onOpenHandler,
   children,
 }: modalPropsType) {
+  const theme = useTheme();
   return (
     <Modal
       open={isOpen}
@@ -24,9 +26,11 @@ export default function CustomModal({
           width: "fit-content",
           boxShadow: 24,
           outline: "none",
-          bgcolor: "primary.light",
+          bgcolor: "primary.dark",
           p: 2,
+          border: "1px solid " + theme.palette.secondary.main,
           borderRadius: "1rem",
+          color: "secondary.main",
         }}
       >
         {children}

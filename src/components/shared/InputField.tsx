@@ -6,14 +6,12 @@ const Input = forwardRef<HTMLInputElement, TextFieldProps>(
     <FormControl fullWidth>
       <TextField
         variant="outlined"
-        color="primary"
         size="small"
         inputRef={ref}
         inputProps={{ style: { fontSize: 16 } }}
         InputLabelProps={{ style: { fontSize: 16 } }}
         {...rest}
       />
-      
     </FormControl>
   )
 );

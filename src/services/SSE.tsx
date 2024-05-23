@@ -18,7 +18,7 @@ const initialValue: dataStreamModel = {
   isLoading: true,
   isError: false,
 };
-export const SseServices = () => {
+export const useSseServices = () => {
   const [dataStream, setData] = useState<dataStreamModel>(initialValue);
   useEffect(() => {
     //set loading true

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useCallback } from "react";
-import axios from "axios";
 import { api } from "@/config/axios";
 
 export default function usePost(url: string) {

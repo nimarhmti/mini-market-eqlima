@@ -2,7 +2,7 @@ import { CustomButton } from "@/components/shared/CustomizeButton";
 import Input from "@/components/shared/InputField";
 import usePost from "@/hooks/usePost";
 import { formProps, valueModel } from "@/types/haomePage/interfaces";
-import { Box, InputAdornment, Typography } from "@mui/material";
+import { Box, InputAdornment, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 //initial values
 const initialValues: valueModel = {
@@ -13,13 +13,12 @@ const url = "/order";
 export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
   const [inputValue, setInputValue] = useState<valueModel>(initialValues);
   const { makeRequest, data, isLoading, error } = usePost(`${url}/${name}`);
-
+  const theme = useTheme();
   //handler functions
   const onChangeHandler = (
     event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.currentTarget;
-    console.log(value);
     const copyValue = +value;
     if (!copyValue) {
       setInputValue({
@@ -63,6 +62,7 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
       <Input
         type="weight"
         id="weight"
+        color="secondary"
         defaultValue={initialValues.weight}
         value={inputValue.weight}
         error={inputValue.errorMessage ? true : false}
@@ -72,8 +72,15 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
         helperText={inputValue.errorMessage}
         FormHelperTextProps={{ style: { textAlign: "right" } }}
         InputProps={{
-          startAdornment: <InputAdornment position="start">گرم</InputAdornment>,
-          style: { textAlign: "right" },
+          startAdornment: (
+            <InputAdornment position="start">
+              <Typography color="secondary.main">گرم</Typography>
+            </InputAdornment>
+          ),
+          style: {
+            textAlign: "right",
+            color: theme.palette.secondary.main,
+          },
         }}
       />
       <Box aria-label="Basic button group">

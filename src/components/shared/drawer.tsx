@@ -3,7 +3,9 @@ import { drawerPropsType } from "../../types/sharedcomponents/interfaces";
 import { SwipeableDrawer, styled } from "@mui/material";
 
 const StyledBox = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.primary.dark,
+  color: theme.palette.secondary.main,
+  borderTop: "1px solid " + theme.palette.secondary.main,
 }));
 
 export const Drawer = ({

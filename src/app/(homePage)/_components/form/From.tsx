@@ -1,6 +1,7 @@
 import { CustomButton } from "@/components/shared/CustomizeButton";
 import Input from "@/components/shared/InputField";
-import usePost from "@/hooks/usePost";
+import { RegisterApi } from "@/services";
+import { useMutationBuy } from "@/services/buy/buy.query";
 import { formProps, valueModel } from "@/types/haomePage/interfaces";
 import { Box, InputAdornment, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
@@ -9,10 +10,10 @@ const initialValues: valueModel = {
   errorMessage: "",
   weight: 100,
 };
-const url = "/order";
 export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
   const [inputValue, setInputValue] = useState<valueModel>(initialValues);
-  const { makeRequest, data, isLoading, error } = usePost(`${url}/${name}`);
+  const mutationApi = RegisterApi[name];
+  const { mutate } = mutationApi();
   const theme = useTheme();
   //handler functions
   const onChangeHandler = (
@@ -41,10 +42,18 @@ export const From = ({ onCloseModal, lastPrice, name }: formProps) => {
   };
   const handlePost = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await makeRequest({
-      weight: +inputValue.weight,
-      price: lastPrice,
-    });
+    mutate(
+      {
+        weight: +inputValue.weight,
+        price: lastPrice,
+      },
+      {
+        onSuccess() {
+          console.log("done");
+          onCloseModal();
+        },
+      }
+    );
   };
   //main
 

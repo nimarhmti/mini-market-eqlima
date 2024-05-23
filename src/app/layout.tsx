@@ -4,6 +4,7 @@ import theme from "@/theme/theme";
 import type { Metadata } from "next";
 // import "../../style/globals.css";
 import { CssBaseline } from "@mui/material";
+import ReactQueryProvider from "@/config/reactQueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +22,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            {children}
+            <ReactQueryProvider>{children}</ReactQueryProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

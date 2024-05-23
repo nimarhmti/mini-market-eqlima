@@ -2,7 +2,7 @@
 export interface formProps {
   onCloseModal: () => void;
   lastPrice: number | undefined | null;
-  name: string;
+  name: "buy" | "sell";
 }
 export interface valueModel {
   weight: number;
